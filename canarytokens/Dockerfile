@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
     pip install -U setuptools && \
     pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
-    wget -O master.zip https://github.com/thinkst/canarytokens/archive/refs/heads/master.zip && \
+    wget -O master.zip https://github.com/JStyle21/canarytokens/archive/refs/heads/master.zip && \
     unzip master.zip && \
     mv /canarytokens-master/* /srv && \
     rm -rf /canarytokens-master
