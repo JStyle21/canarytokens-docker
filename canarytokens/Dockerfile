@@ -13,7 +13,7 @@ COPY requirements.txt ./
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
 # concatenating RUN commands into a single image layer
 # installing PIP requirements from requirements.txt file
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates tzdata \
+RUN TZ=Israel apt-get update && apt-get install -y --no-install-recommends ca-certificates tzdata \
     wget python-pip unzip osslsigncode gcc python-dev libreadline-dev \
     libncurses5-dev libffi-dev gcc patch make libxslt-dev libxml2-dev \
     libz-dev fortune-mod fortunes libssl-dev && \
