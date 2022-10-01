@@ -2,3 +2,7 @@
 dump.rdb
 appendonly.aof
 *.env
+data/*
+nginx/.htpasswd
+
+
