@@ -11,7 +11,8 @@ WORKDIR /
 COPY requirements.txt ./
 # removing PIP deprecation banners
 ENV PIP_DISABLE_PIP_VERSION_CHECK=1
-ENV TZ="Israel"
+ENV TZ=Israel
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # concatenating RUN commands into a single image layer
 # installing PIP requirements from requirements.txt file
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates \
