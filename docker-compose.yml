@@ -1,6 +1,8 @@
 version: '2'
 services:
   redis:
+    environment:
+     - TZ=Israel
     restart: always
     image: redis
     volumes:
@@ -8,6 +10,8 @@ services:
     container_name: redis
     command: redis-server --appendonly yes --protected-mode no --save 60 1
   frontend:
+    environment:
+     - TZ=Israel
     restart: always
     build: ./canarytokens/
     image: thinkst/canarytokens
@@ -21,6 +25,8 @@ services:
     container_name: frontend
     command: bash -c "rm -f frontend.pid; twistd -noy frontend.tac --pidfile=frontend.pid"
   switchboard:
+    environment:
+     - TZ=Israel
     build: ./canarytokens/
     restart: always
     image: thinkst/canarytokens
@@ -40,6 +46,8 @@ services:
     container_name: switchboard
     command: bash -c "rm -f switchboard.pid; twistd -noy switchboard.tac --pidfile=switchboard.pid"
   nginx:
+    environment:
+     - TZ=Israel
     restart: always
     image: thinkst/canarytokens_nginx
     build: ./nginx/
