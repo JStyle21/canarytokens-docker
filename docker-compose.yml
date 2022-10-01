@@ -7,6 +7,8 @@ services:
     image: redis
     volumes:
     - ./data:/data/
+    - /etc/timezone:/etc/timezone:ro
+    - /etc/localtime:/etc/localtime:ro
     container_name: redis
     command: redis-server --appendonly yes --protected-mode no --save 60 1
   frontend:
@@ -22,6 +24,8 @@ services:
     volumes:
     - ./uploads:/uploads/
     - log-volume:/logs
+    - /etc/timezone:/etc/timezone:ro
+    - /etc/localtime:/etc/localtime:ro
     container_name: frontend
     command: bash -c "rm -f frontend.pid; twistd -noy frontend.tac --pidfile=frontend.pid"
   switchboard:
